@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="76451f02c3a34cb0959cdd65fe067ea8" Name="Diagram1">
+        <EntityTypeShape EntityType="dbDesafioModel.MEDKITCalificacion" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbDesafioModel.MEDKITCategoria" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbDesafioModel.MEDKITLuchador" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbDesafioModel.MEDKITLuchadorPersonaje" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbDesafioModel.MEDKITPersonaje" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbDesafioModel.MEDKITReto" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbDesafioModel.MEDKITUsuario" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="dbDesafioModel.Calificacion_LuchadorPersonaje_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="dbDesafioModel.Calificacion_Reto_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="dbDesafioModel.Categoria_Reto_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="dbDesafioModel.Luchador_LuchadorPersonaje_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="dbDesafioModel.Personaje_LuchadorPersonaje_FK" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

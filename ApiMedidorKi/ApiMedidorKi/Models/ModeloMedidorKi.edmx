@@ -1,0 +1,528 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbDesafioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="MEDKITCalificacion">
+          <Key>
+            <PropertyRef Name="IdCalificacion" />
+          </Key>
+          <Property Name="IdCalificacion" Type="int" Nullable="false" />
+          <Property Name="IdLuchadorPersonaje" Type="int" Nullable="false" />
+          <Property Name="IdReto" Type="int" Nullable="false" />
+          <Property Name="Puntaje" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="UsuarioInserto" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FechaInserto" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModifico" Type="nvarchar" MaxLength="100" />
+          <Property Name="FechaModifico" Type="datetime" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MEDKITCategoria">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="int" Nullable="false" />
+          <Property Name="NombreCategoria" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="UsuarioInserto" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FechaInserto" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModifico" Type="nvarchar" MaxLength="100" />
+          <Property Name="FechaModifico" Type="datetime" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MEDKITLuchador">
+          <Key>
+            <PropertyRef Name="IdLuchador" />
+          </Key>
+          <Property Name="IdLuchador" Type="int" Nullable="false" />
+          <Property Name="NombreLuchador" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="CorreoLuchador" Type="nvarchar" MaxLength="500" />
+          <Property Name="UsuarioInserto" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FechaInserto" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModifico" Type="nvarchar" MaxLength="100" />
+          <Property Name="FechaModifico" Type="datetime" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MEDKITLuchadorPersonaje">
+          <Key>
+            <PropertyRef Name="IdLuchadorPersonaje" />
+          </Key>
+          <Property Name="IdLuchadorPersonaje" Type="int" Nullable="false" />
+          <Property Name="IdLuchador" Type="int" Nullable="false" />
+          <Property Name="IdPersonaje" Type="int" Nullable="false" />
+          <Property Name="Ki" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Esferas" Type="int" />
+          <Property Name="UsuarioInserto" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FechaInserto" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModifico" Type="nvarchar" MaxLength="100" />
+          <Property Name="FechaModifico" Type="datetime" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MEDKITPersonaje">
+          <Key>
+            <PropertyRef Name="IdPersonaje" />
+          </Key>
+          <Property Name="IdPersonaje" Type="int" Nullable="false" />
+          <Property Name="NombrePersonaje" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="PoderInicio" Type="int" Nullable="false" />
+          <Property Name="PoderFin" Type="int" Nullable="false" />
+          <Property Name="UsuarioInserto" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FechaInserto" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModifico" Type="nvarchar" MaxLength="100" />
+          <Property Name="FechaModifico" Type="datetime" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MEDKITReto">
+          <Key>
+            <PropertyRef Name="IdReto" />
+          </Key>
+          <Property Name="IdReto" Type="int" Nullable="false" />
+          <Property Name="NombreReto" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="IdCategoria" Type="int" Nullable="false" />
+          <Property Name="UsuarioInserto" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FechaInserto" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModifico" Type="nvarchar" MaxLength="100" />
+          <Property Name="FechaModifico" Type="datetime" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MEDKITUsuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NombreUsuario" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="ClaveUsuario" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UsuarioInserto" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FechaInserto" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioModifico" Type="nvarchar" MaxLength="100" />
+          <Property Name="FechaModifico" Type="datetime" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="Calificacion_LuchadorPersonaje_FK">
+          <End Role="MEDKITLuchadorPersonaje" Type="Self.MEDKITLuchadorPersonaje" Multiplicity="1" />
+          <End Role="MEDKITCalificacion" Type="Self.MEDKITCalificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEDKITLuchadorPersonaje">
+              <PropertyRef Name="IdLuchadorPersonaje" />
+            </Principal>
+            <Dependent Role="MEDKITCalificacion">
+              <PropertyRef Name="IdLuchadorPersonaje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Calificacion_Reto_FK">
+          <End Role="MEDKITReto" Type="Self.MEDKITReto" Multiplicity="1" />
+          <End Role="MEDKITCalificacion" Type="Self.MEDKITCalificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEDKITReto">
+              <PropertyRef Name="IdReto" />
+            </Principal>
+            <Dependent Role="MEDKITCalificacion">
+              <PropertyRef Name="IdReto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Categoria_Reto_FK">
+          <End Role="MEDKITCategoria" Type="Self.MEDKITCategoria" Multiplicity="1" />
+          <End Role="MEDKITReto" Type="Self.MEDKITReto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEDKITCategoria">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="MEDKITReto">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Luchador_LuchadorPersonaje_FK">
+          <End Role="MEDKITLuchador" Type="Self.MEDKITLuchador" Multiplicity="1" />
+          <End Role="MEDKITLuchadorPersonaje" Type="Self.MEDKITLuchadorPersonaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEDKITLuchador">
+              <PropertyRef Name="IdLuchador" />
+            </Principal>
+            <Dependent Role="MEDKITLuchadorPersonaje">
+              <PropertyRef Name="IdLuchador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Personaje_LuchadorPersonaje_FK">
+          <End Role="MEDKITPersonaje" Type="Self.MEDKITPersonaje" Multiplicity="1" />
+          <End Role="MEDKITLuchadorPersonaje" Type="Self.MEDKITLuchadorPersonaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEDKITPersonaje">
+              <PropertyRef Name="IdPersonaje" />
+            </Principal>
+            <Dependent Role="MEDKITLuchadorPersonaje">
+              <PropertyRef Name="IdPersonaje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbDesafioModelStoreContainer">
+          <EntitySet Name="MEDKITCalificacion" EntityType="Self.MEDKITCalificacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEDKITCategoria" EntityType="Self.MEDKITCategoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEDKITLuchador" EntityType="Self.MEDKITLuchador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEDKITLuchadorPersonaje" EntityType="Self.MEDKITLuchadorPersonaje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEDKITPersonaje" EntityType="Self.MEDKITPersonaje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEDKITReto" EntityType="Self.MEDKITReto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEDKITUsuario" EntityType="Self.MEDKITUsuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Calificacion_LuchadorPersonaje_FK" Association="Self.Calificacion_LuchadorPersonaje_FK">
+            <End Role="MEDKITLuchadorPersonaje" EntitySet="MEDKITLuchadorPersonaje" />
+            <End Role="MEDKITCalificacion" EntitySet="MEDKITCalificacion" />
+          </AssociationSet>
+          <AssociationSet Name="Calificacion_Reto_FK" Association="Self.Calificacion_Reto_FK">
+            <End Role="MEDKITReto" EntitySet="MEDKITReto" />
+            <End Role="MEDKITCalificacion" EntitySet="MEDKITCalificacion" />
+          </AssociationSet>
+          <AssociationSet Name="Categoria_Reto_FK" Association="Self.Categoria_Reto_FK">
+            <End Role="MEDKITCategoria" EntitySet="MEDKITCategoria" />
+            <End Role="MEDKITReto" EntitySet="MEDKITReto" />
+          </AssociationSet>
+          <AssociationSet Name="Luchador_LuchadorPersonaje_FK" Association="Self.Luchador_LuchadorPersonaje_FK">
+            <End Role="MEDKITLuchador" EntitySet="MEDKITLuchador" />
+            <End Role="MEDKITLuchadorPersonaje" EntitySet="MEDKITLuchadorPersonaje" />
+          </AssociationSet>
+          <AssociationSet Name="Personaje_LuchadorPersonaje_FK" Association="Self.Personaje_LuchadorPersonaje_FK">
+            <End Role="MEDKITPersonaje" EntitySet="MEDKITPersonaje" />
+            <End Role="MEDKITLuchadorPersonaje" EntitySet="MEDKITLuchadorPersonaje" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbDesafioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MEDKITCalificacion">
+          <Key>
+            <PropertyRef Name="IdCalificacion" />
+          </Key>
+          <Property Name="IdCalificacion" Type="Int32" Nullable="false" />
+          <Property Name="IdLuchadorPersonaje" Type="Int32" Nullable="false" />
+          <Property Name="IdReto" Type="Int32" Nullable="false" />
+          <Property Name="Puntaje" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="UsuarioInserto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaInserto" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModifico" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModifico" Type="DateTime" Precision="3" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="MEDKITLuchadorPersonaje" Relationship="Self.Calificacion_LuchadorPersonaje_FK" FromRole="MEDKITCalificacion" ToRole="MEDKITLuchadorPersonaje" />
+          <NavigationProperty Name="MEDKITReto" Relationship="Self.Calificacion_Reto_FK" FromRole="MEDKITCalificacion" ToRole="MEDKITReto" />
+        </EntityType>
+        <EntityType Name="MEDKITCategoria">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="Int32" Nullable="false" />
+          <Property Name="NombreCategoria" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UsuarioInserto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaInserto" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModifico" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModifico" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="MEDKITReto" Relationship="Self.Categoria_Reto_FK" FromRole="MEDKITCategoria" ToRole="MEDKITReto" />
+        </EntityType>
+        <EntityType Name="MEDKITLuchador">
+          <Key>
+            <PropertyRef Name="IdLuchador" />
+          </Key>
+          <Property Name="IdLuchador" Type="Int32" Nullable="false" />
+          <Property Name="NombreLuchador" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CorreoLuchador" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UsuarioInserto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaInserto" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModifico" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModifico" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="MEDKITLuchadorPersonaje" Relationship="Self.Luchador_LuchadorPersonaje_FK" FromRole="MEDKITLuchador" ToRole="MEDKITLuchadorPersonaje" />
+        </EntityType>
+        <EntityType Name="MEDKITLuchadorPersonaje">
+          <Key>
+            <PropertyRef Name="IdLuchadorPersonaje" />
+          </Key>
+          <Property Name="IdLuchadorPersonaje" Type="Int32" Nullable="false" />
+          <Property Name="IdLuchador" Type="Int32" Nullable="false" />
+          <Property Name="IdPersonaje" Type="Int32" Nullable="false" />
+          <Property Name="Ki" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Esferas" Type="Int32" />
+          <Property Name="UsuarioInserto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaInserto" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModifico" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModifico" Type="DateTime" Precision="3" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="MEDKITCalificacion" Relationship="Self.Calificacion_LuchadorPersonaje_FK" FromRole="MEDKITLuchadorPersonaje" ToRole="MEDKITCalificacion" />
+          <NavigationProperty Name="MEDKITLuchador" Relationship="Self.Luchador_LuchadorPersonaje_FK" FromRole="MEDKITLuchadorPersonaje" ToRole="MEDKITLuchador" />
+          <NavigationProperty Name="MEDKITPersonaje" Relationship="Self.Personaje_LuchadorPersonaje_FK" FromRole="MEDKITLuchadorPersonaje" ToRole="MEDKITPersonaje" />
+        </EntityType>
+        <EntityType Name="MEDKITPersonaje">
+          <Key>
+            <PropertyRef Name="IdPersonaje" />
+          </Key>
+          <Property Name="IdPersonaje" Type="Int32" Nullable="false" />
+          <Property Name="NombrePersonaje" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PoderInicio" Type="Int32" Nullable="false" />
+          <Property Name="PoderFin" Type="Int32" Nullable="false" />
+          <Property Name="UsuarioInserto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaInserto" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModifico" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModifico" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="MEDKITLuchadorPersonaje" Relationship="Self.Personaje_LuchadorPersonaje_FK" FromRole="MEDKITPersonaje" ToRole="MEDKITLuchadorPersonaje" />
+        </EntityType>
+        <EntityType Name="MEDKITReto">
+          <Key>
+            <PropertyRef Name="IdReto" />
+          </Key>
+          <Property Name="IdReto" Type="Int32" Nullable="false" />
+          <Property Name="NombreReto" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdCategoria" Type="Int32" Nullable="false" />
+          <Property Name="UsuarioInserto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaInserto" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModifico" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModifico" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="MEDKITCalificacion" Relationship="Self.Calificacion_Reto_FK" FromRole="MEDKITReto" ToRole="MEDKITCalificacion" />
+          <NavigationProperty Name="MEDKITCategoria" Relationship="Self.Categoria_Reto_FK" FromRole="MEDKITReto" ToRole="MEDKITCategoria" />
+        </EntityType>
+        <EntityType Name="MEDKITUsuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NombreUsuario" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaveUsuario" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UsuarioInserto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaInserto" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModifico" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModifico" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="Calificacion_LuchadorPersonaje_FK">
+          <End Role="MEDKITLuchadorPersonaje" Type="Self.MEDKITLuchadorPersonaje" Multiplicity="1" />
+          <End Role="MEDKITCalificacion" Type="Self.MEDKITCalificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEDKITLuchadorPersonaje">
+              <PropertyRef Name="IdLuchadorPersonaje" />
+            </Principal>
+            <Dependent Role="MEDKITCalificacion">
+              <PropertyRef Name="IdLuchadorPersonaje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Calificacion_Reto_FK">
+          <End Role="MEDKITReto" Type="Self.MEDKITReto" Multiplicity="1" />
+          <End Role="MEDKITCalificacion" Type="Self.MEDKITCalificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEDKITReto">
+              <PropertyRef Name="IdReto" />
+            </Principal>
+            <Dependent Role="MEDKITCalificacion">
+              <PropertyRef Name="IdReto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Categoria_Reto_FK">
+          <End Role="MEDKITCategoria" Type="Self.MEDKITCategoria" Multiplicity="1" />
+          <End Role="MEDKITReto" Type="Self.MEDKITReto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEDKITCategoria">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="MEDKITReto">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Luchador_LuchadorPersonaje_FK">
+          <End Role="MEDKITLuchador" Type="Self.MEDKITLuchador" Multiplicity="1" />
+          <End Role="MEDKITLuchadorPersonaje" Type="Self.MEDKITLuchadorPersonaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEDKITLuchador">
+              <PropertyRef Name="IdLuchador" />
+            </Principal>
+            <Dependent Role="MEDKITLuchadorPersonaje">
+              <PropertyRef Name="IdLuchador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Personaje_LuchadorPersonaje_FK">
+          <End Role="MEDKITPersonaje" Type="Self.MEDKITPersonaje" Multiplicity="1" />
+          <End Role="MEDKITLuchadorPersonaje" Type="Self.MEDKITLuchadorPersonaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEDKITPersonaje">
+              <PropertyRef Name="IdPersonaje" />
+            </Principal>
+            <Dependent Role="MEDKITLuchadorPersonaje">
+              <PropertyRef Name="IdPersonaje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbDesafioEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MEDKITCalificacion" EntityType="Self.MEDKITCalificacion" />
+          <EntitySet Name="MEDKITCategoria" EntityType="Self.MEDKITCategoria" />
+          <EntitySet Name="MEDKITLuchador" EntityType="Self.MEDKITLuchador" />
+          <EntitySet Name="MEDKITLuchadorPersonaje" EntityType="Self.MEDKITLuchadorPersonaje" />
+          <EntitySet Name="MEDKITPersonaje" EntityType="Self.MEDKITPersonaje" />
+          <EntitySet Name="MEDKITReto" EntityType="Self.MEDKITReto" />
+          <EntitySet Name="MEDKITUsuario" EntityType="Self.MEDKITUsuario" />
+          <AssociationSet Name="Calificacion_LuchadorPersonaje_FK" Association="Self.Calificacion_LuchadorPersonaje_FK">
+            <End Role="MEDKITLuchadorPersonaje" EntitySet="MEDKITLuchadorPersonaje" />
+            <End Role="MEDKITCalificacion" EntitySet="MEDKITCalificacion" />
+          </AssociationSet>
+          <AssociationSet Name="Calificacion_Reto_FK" Association="Self.Calificacion_Reto_FK">
+            <End Role="MEDKITReto" EntitySet="MEDKITReto" />
+            <End Role="MEDKITCalificacion" EntitySet="MEDKITCalificacion" />
+          </AssociationSet>
+          <AssociationSet Name="Categoria_Reto_FK" Association="Self.Categoria_Reto_FK">
+            <End Role="MEDKITCategoria" EntitySet="MEDKITCategoria" />
+            <End Role="MEDKITReto" EntitySet="MEDKITReto" />
+          </AssociationSet>
+          <AssociationSet Name="Luchador_LuchadorPersonaje_FK" Association="Self.Luchador_LuchadorPersonaje_FK">
+            <End Role="MEDKITLuchador" EntitySet="MEDKITLuchador" />
+            <End Role="MEDKITLuchadorPersonaje" EntitySet="MEDKITLuchadorPersonaje" />
+          </AssociationSet>
+          <AssociationSet Name="Personaje_LuchadorPersonaje_FK" Association="Self.Personaje_LuchadorPersonaje_FK">
+            <End Role="MEDKITPersonaje" EntitySet="MEDKITPersonaje" />
+            <End Role="MEDKITLuchadorPersonaje" EntitySet="MEDKITLuchadorPersonaje" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbDesafioModelStoreContainer" CdmEntityContainer="dbDesafioEntities">
+          <EntitySetMapping Name="MEDKITCalificacion">
+            <EntityTypeMapping TypeName="dbDesafioModel.MEDKITCalificacion">
+              <MappingFragment StoreEntitySet="MEDKITCalificacion">
+                <ScalarProperty Name="IdCalificacion" ColumnName="IdCalificacion" />
+                <ScalarProperty Name="IdLuchadorPersonaje" ColumnName="IdLuchadorPersonaje" />
+                <ScalarProperty Name="IdReto" ColumnName="IdReto" />
+                <ScalarProperty Name="Puntaje" ColumnName="Puntaje" />
+                <ScalarProperty Name="UsuarioInserto" ColumnName="UsuarioInserto" />
+                <ScalarProperty Name="FechaInserto" ColumnName="FechaInserto" />
+                <ScalarProperty Name="UsuarioModifico" ColumnName="UsuarioModifico" />
+                <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEDKITCategoria">
+            <EntityTypeMapping TypeName="dbDesafioModel.MEDKITCategoria">
+              <MappingFragment StoreEntitySet="MEDKITCategoria">
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+                <ScalarProperty Name="UsuarioInserto" ColumnName="UsuarioInserto" />
+                <ScalarProperty Name="FechaInserto" ColumnName="FechaInserto" />
+                <ScalarProperty Name="UsuarioModifico" ColumnName="UsuarioModifico" />
+                <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEDKITLuchador">
+            <EntityTypeMapping TypeName="dbDesafioModel.MEDKITLuchador">
+              <MappingFragment StoreEntitySet="MEDKITLuchador">
+                <ScalarProperty Name="IdLuchador" ColumnName="IdLuchador" />
+                <ScalarProperty Name="NombreLuchador" ColumnName="NombreLuchador" />
+                <ScalarProperty Name="CorreoLuchador" ColumnName="CorreoLuchador" />
+                <ScalarProperty Name="UsuarioInserto" ColumnName="UsuarioInserto" />
+                <ScalarProperty Name="FechaInserto" ColumnName="FechaInserto" />
+                <ScalarProperty Name="UsuarioModifico" ColumnName="UsuarioModifico" />
+                <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEDKITLuchadorPersonaje">
+            <EntityTypeMapping TypeName="dbDesafioModel.MEDKITLuchadorPersonaje">
+              <MappingFragment StoreEntitySet="MEDKITLuchadorPersonaje">
+                <ScalarProperty Name="IdLuchadorPersonaje" ColumnName="IdLuchadorPersonaje" />
+                <ScalarProperty Name="IdLuchador" ColumnName="IdLuchador" />
+                <ScalarProperty Name="IdPersonaje" ColumnName="IdPersonaje" />
+                <ScalarProperty Name="Ki" ColumnName="Ki" />
+                <ScalarProperty Name="Esferas" ColumnName="Esferas" />
+                <ScalarProperty Name="UsuarioInserto" ColumnName="UsuarioInserto" />
+                <ScalarProperty Name="FechaInserto" ColumnName="FechaInserto" />
+                <ScalarProperty Name="UsuarioModifico" ColumnName="UsuarioModifico" />
+                <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEDKITPersonaje">
+            <EntityTypeMapping TypeName="dbDesafioModel.MEDKITPersonaje">
+              <MappingFragment StoreEntitySet="MEDKITPersonaje">
+                <ScalarProperty Name="IdPersonaje" ColumnName="IdPersonaje" />
+                <ScalarProperty Name="NombrePersonaje" ColumnName="NombrePersonaje" />
+                <ScalarProperty Name="PoderInicio" ColumnName="PoderInicio" />
+                <ScalarProperty Name="PoderFin" ColumnName="PoderFin" />
+                <ScalarProperty Name="UsuarioInserto" ColumnName="UsuarioInserto" />
+                <ScalarProperty Name="FechaInserto" ColumnName="FechaInserto" />
+                <ScalarProperty Name="UsuarioModifico" ColumnName="UsuarioModifico" />
+                <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEDKITReto">
+            <EntityTypeMapping TypeName="dbDesafioModel.MEDKITReto">
+              <MappingFragment StoreEntitySet="MEDKITReto">
+                <ScalarProperty Name="IdReto" ColumnName="IdReto" />
+                <ScalarProperty Name="NombreReto" ColumnName="NombreReto" />
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="UsuarioInserto" ColumnName="UsuarioInserto" />
+                <ScalarProperty Name="FechaInserto" ColumnName="FechaInserto" />
+                <ScalarProperty Name="UsuarioModifico" ColumnName="UsuarioModifico" />
+                <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEDKITUsuario">
+            <EntityTypeMapping TypeName="dbDesafioModel.MEDKITUsuario">
+              <MappingFragment StoreEntitySet="MEDKITUsuario">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="ClaveUsuario" ColumnName="ClaveUsuario" />
+                <ScalarProperty Name="UsuarioInserto" ColumnName="UsuarioInserto" />
+                <ScalarProperty Name="FechaInserto" ColumnName="FechaInserto" />
+                <ScalarProperty Name="UsuarioModifico" ColumnName="UsuarioModifico" />
+                <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
