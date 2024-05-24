@@ -131,9 +131,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CalificacionController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\LuchadorController.cs" />
+    <Compile Include="Controllers\RetoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BE\CalificacionBE.cs" />
     <Compile Include="Models\LoginApi\Credenciales.cs" />
     <Compile Include="Models\LoginApi\GeneraToken.cs" />
     <Compile Include="Models\LoginApi\Token.cs" />
