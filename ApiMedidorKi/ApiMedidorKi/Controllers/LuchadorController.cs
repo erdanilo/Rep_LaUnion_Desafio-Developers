@@ -14,15 +14,21 @@ namespace ApiMedidorKi.Controllers
         [Route("api/luchador")]
         public IHttpActionResult Get()
         {
+            contexto.Configuration.LazyLoadingEnabled = false;
+            contexto.Configuration.ProxyCreationEnabled = false;
+
             var listaLuchadores = contexto.MEDKITLuchador.Where(x=> !x.Eliminado).ToList();
 
             return Ok(listaLuchadores);
         }
 
         [HttpGet]
-        [Route("api/luchador/detalle")]
+        [Route("api/luchador/detalle/{idLuchadorPersonaje}")]
         public IHttpActionResult Detalle(int idLuchadorPersonaje)
         {
+            contexto.Configuration.LazyLoadingEnabled = false;
+            contexto.Configuration.ProxyCreationEnabled = false;
+
             var detalleLuchador = (from lp in contexto.MEDKITLuchadorPersonaje
                                    join p in contexto.MEDKITPersonaje on lp.IdPersonaje equals p.IdPersonaje
                                    join l in contexto.MEDKITLuchador on lp.IdLuchador equals l.IdLuchador

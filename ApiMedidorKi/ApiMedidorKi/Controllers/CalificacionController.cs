@@ -121,7 +121,7 @@ namespace ApiMedidorKi.Controllers
         }
         
         [HttpPut]
-        [Route("api/calificacion/eliminar")]
+        [Route("api/calificacion/eliminar/{idCalificacion}")]
         public IHttpActionResult Delete(int idCalificacion)
         {
             var calificacion = contexto.MEDKITCalificacion.Where(x => x.IdCalificacion == idCalificacion).FirstOrDefault();
