@@ -1,17 +1,16 @@
-import React, { Component } from "react";
-import {Box, Button} from "@mui/material";
+import React, { useState } from "react";
+import {Button} from "@mui/material";
 import {CssBaseline} from "@mui/material";
 import {FormControl} from "@mui/material";
 import {Input} from "@mui/material";
 import {InputLabel} from "@mui/material";
 import {Typography} from "@mui/material";
 import styled from "@emotion/styled";
-// import API from "../../utils/api";
-// import { signIn, isSignedIn } from "../../utils/auth";
-import { redirect } from "react-router-dom";
+import API from "../utiles/api";
+import { signIn, isSignedIn } from "../utiles/authentication";
+import { useNavigate } from "react-router-dom";
 import {AppBar} from "@mui/material";
 import {Toolbar,Paper} from "@mui/material";
-// import logo from "../../image-repository/logo.png";
 import {Oval} from "react-loader-spinner";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -33,74 +32,63 @@ const Paper_styled = styled(Paper)(() =>({
 //#endregion
 
 
-class SignIn extends Component {
-  state = {
-    userName: "",
-    password: "",
-    redirect: false,
-    isLogin: false,
+function SignIn () {
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLogin, setIsLogin] = useState(false);
+
+  const navigate = useNavigate();
+  const handleRedirect = () => {
+    navigate('/home');
   };
 
-  async componentWillMount() {
-    // let vIsSignedIn = await isSignedIn();
-
-    // if (vIsSignedIn.response) {
-    //   this.setState({ redirect: true });
-    // }
-  }
-
-  handleLogin = async () => {
-      this.setState({ isLogin: true });
+  async function handleLogin() {
+    setIsLogin(true);
 
     try {
-      // await API.Login(this.state.userName, this.state.password, 1).then(
-      //   async (result) => {
-      //     if (await signIn(result)) {
-      //       this.setState({ redirect: true });
-      //     } else {
-      //       this.setState({ isLogin: false, redirect: false });
-            toast.error(
-              "Su usuario o contraseña no son correctos, intentalo de nuevo."
-            );
-      //     }
-      //   }
-      // );
-    } catch (e) {
-      alert(
-        "En este momento no se puede realizar tu solicitud, intentalo más tarde o llama a tu administrador"
+      await API.Login(userName, password).then(
+        
+        async (response) => {
+          if (response.Estado) {
+            if (await signIn(response)) {
+              toast.success("Logueado");
+              handleRedirect();
+            } 
+          } else {
+            setIsLogin(false);
+            toast.error("Su usuario o contraseña no son correctos.");
+          }
+        }
+
       );
+    } catch (e) {
+        alert(
+          "En este momento no se puede realizar su solicitud"
+        );
     } finally {
-      this.setState({ isLogin: false });
+      setIsLogin(false);
     }
-  };
-
-  handleChange = (name) => (event) => {
-    this.setState({
-      [name]: event.target.value,
-    });
-  };
-
-  _handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      this.handleLogin();
-    }
-  };
-
-  submitHandler(e) {
-    e.preventDefault();
   }
 
-  render() {
-    if (this.state.redirect) {
-      return redirect("/home");
+  function handleChangeUserName(e){
+    setUserName(e.target.value);
+  }
+
+  function handleChangePassword(e){
+    setPassword(e.target.value);
+  }
+
+  function handleKeyPress (e) {
+    if (e.key === 'Enter') {
+      handleLogin();
     }
+  }
+
     return (
-      <>
+      <div>
         <CssBaseline />
         <AppBar position="static">
           <Toolbar style={{ backgroundColor: "#2B3C4D" }}>
-            {/* <img src={logo} className="ImgLogo" /> */}
-            {/* <img  className="ImgLogo" /> */}
             <img />
           </Toolbar>
         </AppBar>
@@ -117,7 +105,7 @@ class SignIn extends Component {
                   name="usuario"
                   autoComplete="usuario"
                   autoFocus
-                  onChange={this.handleChange("userName")}
+                  onChange={handleChangeUserName}
                 />
               </FormControl>
               <FormControl margin="normal" required fullWidth>
@@ -127,8 +115,8 @@ class SignIn extends Component {
                   type="password"
                   id="password"
                   autoComplete="current-password"
-                  onChange={this.handleChange("password")}
-                  onKeyPress={this._handleKeyPress}
+                  onChange={handleChangePassword}
+                  onKeyDown={handleKeyPress}
                 />
               </FormControl>
               <Button
@@ -140,22 +128,17 @@ class SignIn extends Component {
                   alignItems: "center",
                   justifyContent: "center",
                 }}
-                onClick={this.handleLogin}
+                onClick={handleLogin}
               >
-                {this.state.isLogin ? (                  
-                  <Oval visible="true" color="white" height="25" width="25" />
-                ) : (
-                  <></>
-                )}
+                {isLogin ? <Oval color="white" height="25" width="25" /> : <></> }
                 &nbsp;Iniciar sesión
               </Button>
             </div>
           </Paper_styled>
         </Main_styled>
         <ToastContainer />
-      </>
+      </div>
     );
-  }
 }
 
 
