@@ -1,11 +1,16 @@
+import axios from "axios";
+import { isSignedIn } from "./authentication";
+
+
 let BASE_API = "http://localhost:56193/";
+
+const axios_instance = axios.create({
+  baseURL: BASE_API
+});
 
 
 class Api{
-    getBaseApi(){
-        return BASE_API;
-    }
-
+ 
     async Login(user, pass) {
         const fetchEndpoint = `${BASE_API}Api/Login`;
     
@@ -35,8 +40,20 @@ class Api{
     
         const request = await query.json();
         console.log("API[Login]: DATOS DE SESSION (TOKEN REQUEST)", request);
-
+        
         return request;
+    }
+
+    async Get(path){
+      try {
+        let authorization = await isSignedIn();
+        axios_instance.defaults.headers.common['Authorization'] = `Bearer ${authorization.accessToken}`
+        const response = await axios_instance.get(path);
+
+        return response.data;
+      } catch (error) {
+        console.error(error);
+      }
     }
 }
 

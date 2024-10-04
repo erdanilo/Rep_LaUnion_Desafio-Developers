@@ -28,6 +28,7 @@ namespace ApiMedidorKi.Models
         public string UsuarioModifico { get; set; }
         public Nullable<System.DateTime> FechaModifico { get; set; }
         public bool Eliminado { get; set; }
+        public Nullable<int> PunteoAprobacion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MEDKITCalificacion> MEDKITCalificacion { get; set; }

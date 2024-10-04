@@ -1,6 +1,7 @@
 ﻿using ApiMedidorKi.Models;
 using System.Linq;
 using System.Web.Http;
+using ApiMedidorKi.Clases;
 
 
 namespace ApiMedidorKi.Controllers
@@ -14,12 +15,9 @@ namespace ApiMedidorKi.Controllers
         [Route("api/luchador")]
         public IHttpActionResult Get()
         {
-            contexto.Configuration.LazyLoadingEnabled = false;
-            contexto.Configuration.ProxyCreationEnabled = false;
+            Luchador luchadores = new Luchador();
 
-            var listaLuchadores = contexto.MEDKITLuchador.Where(x=> !x.Eliminado).ToList();
-
-            return Ok(listaLuchadores);
+            return Ok(luchadores.GetLuchadores());
         }
 
         [HttpGet]
@@ -50,7 +48,7 @@ namespace ApiMedidorKi.Controllers
                                                                         agrupacion.Key.NombreCategoria,
                                                                         agrupacion.Key.NombreReto
                                                                     }).ToList(),
-                                        listaRestosPendientes = (from c in contexto.MEDKITCalificacion
+                                        listaRetosPendientes = (from c in contexto.MEDKITCalificacion
                                                                  join r in contexto.MEDKITReto on c.IdReto equals r.IdReto
                                                                  join cat in contexto.MEDKITCategoria on r.IdCategoria equals cat.IdCategoria
                                                                  where !c.Eliminado && c.Puntaje <= 70 && c.IdLuchadorPersonaje == lp.IdLuchadorPersonaje
@@ -63,6 +61,15 @@ namespace ApiMedidorKi.Controllers
                                    }).ToList();
 
             return Ok(detalleLuchador);
+        }
+
+        [HttpGet]
+        [Route("api/luchador/resumen")]
+        public IHttpActionResult Resumen()
+        {
+            Luchador luchadores = new Luchador();
+
+            return Ok(luchadores.GetResumen());
         }
 
     }

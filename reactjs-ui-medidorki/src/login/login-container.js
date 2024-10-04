@@ -38,29 +38,23 @@ function SignIn () {
   const [isLogin, setIsLogin] = useState(false);
 
   const navigate = useNavigate();
-  const handleRedirect = () => {
-    navigate('/home');
-  };
+  const handleRedirect = () => { navigate('/home'); };
 
   async function handleLogin() {
     setIsLogin(true);
 
     try {
       await API.Login(userName, password).then(
-        
         async (response) => {
           if (response.Estado) {
             if (await signIn(response)) {
-              toast.success("Logueado");
               handleRedirect();
             } 
           } else {
             setIsLogin(false);
             toast.error("Su usuario o contraseña no son correctos.");
           }
-        }
-
-      );
+        });
     } catch (e) {
         alert(
           "En este momento no se puede realizar su solicitud"

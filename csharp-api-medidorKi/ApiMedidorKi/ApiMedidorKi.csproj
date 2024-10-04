@@ -129,6 +129,7 @@
     <Compile Include="App_Start\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Clases\Luchador.cs" />
     <Compile Include="Controllers\CalificacionController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LuchadorController.cs" />
@@ -137,6 +138,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BE\CalificacionBE.cs" />
+    <Compile Include="Models\BE\DetalleBE.cs" />
+    <Compile Include="Models\BE\LuchadorBE.cs" />
+    <Compile Include="Models\BE\ResumenLuchadorBE.cs" />
     <Compile Include="Models\LoginApi\Credenciales.cs" />
     <Compile Include="Models\LoginApi\GeneraToken.cs" />
     <Compile Include="Models\LoginApi\Token.cs" />
