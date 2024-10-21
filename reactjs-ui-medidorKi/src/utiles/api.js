@@ -50,7 +50,7 @@ class Api{
         axios_instance.defaults.headers.common['Authorization'] = `Bearer ${authorization.accessToken}`
         const response = await axios_instance.get(path);
 
-        return response.data;
+        return response;
       } catch (error) {
         console.error(error);
       }

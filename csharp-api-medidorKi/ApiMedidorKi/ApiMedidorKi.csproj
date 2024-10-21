@@ -138,9 +138,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BE\CalificacionBE.cs" />
-    <Compile Include="Models\BE\DetalleBE.cs" />
+    <Compile Include="Models\BE\CategoriaBE.cs" />
+    <Compile Include="Models\BE\DetalleLuchadorBE.cs" />
     <Compile Include="Models\BE\LuchadorBE.cs" />
     <Compile Include="Models\BE\ResumenLuchadorBE.cs" />
+    <Compile Include="Models\BE\RetoBE.cs" />
     <Compile Include="Models\LoginApi\Credenciales.cs" />
     <Compile Include="Models\LoginApi\GeneraToken.cs" />
     <Compile Include="Models\LoginApi\Token.cs" />

@@ -20,7 +20,6 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import SummarizeIcon from '@mui/icons-material/Summarize';
 import Admin from '../admin/admin';
 import Resumen from '../resumen/resumen';
-import ResumenCarrusel from '../resumen/resumen-carrusel';
 
 
 //#region estilos
@@ -132,7 +131,6 @@ export default function Layout() {
     switch (activeComponent) {
       case "resumen":
         return <Resumen />;
-        // return <ResumenCarrusel />
       case "settings":
         return <Admin />;
       default:
